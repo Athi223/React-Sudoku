@@ -22,7 +22,7 @@ It has 3 difficulty levels:
 
 ## Screenshot
 
-![ImgBB](https://i.ibb.co/qWwGFMr/sudoku.png)
+![Sudoku](https://i.ibb.co/HGCnTzK/sudoku.png)
 
 ## Available Scripts
 
