@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
 body {
 	background: rgb(252,140,189);
 	background: radial-gradient(circle, rgba(252,140,189,1) 0%, rgba(148,187,233,1) 100%);
@@ -5,8 +11,6 @@ body {
 
 input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 
-	-webkit-appearance: none;
-	-moz-appearance: none;
 	appearance: none;
 	margin: 0;
 }
@@ -15,6 +19,6 @@ input[type=number]::-webkit-outer-spin-button {
 	background-color: lightskyblue;
 }
 
-.text-readonly {
+.text-readonly, .text-readonly:focus, .text-readonly:hover {
 	color: purple;
 }
