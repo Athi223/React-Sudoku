@@ -22,6 +22,7 @@ export default function App() {
 		setEmpty(_empty)
 	}
 	const newGame = () => {
+		setResultModal(false)
 		setdifficultyModal(true)
 	}
 	const checkGame = () => {
