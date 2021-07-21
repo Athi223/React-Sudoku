@@ -7,10 +7,15 @@ export default function Line(props) {
 				{[0, 1, 2, 3, 4, 5, 6, 7, 8].map(col =>
 					{
 						const empty = props.empty[props.row].includes(col)
+						const colClassName = "p-5 border " +
+						( Math.floor(col % 3) === 0 ? "border-left " : "" ) +
+						( col === 8 ? "border-right " : "" ) +
+						( Math.floor(props.row % 3) === 0 ? "border-top" : "" ) +
+						( props.row === 8 ? "border-bottom": "" )
 						const className = "h-full text-center border-0 font-size-18 font-weight-bold " +
-							(empty ? "text-user " : "text-readonly " ) + ( (Math.floor(props.row / 3) +
-							Math.floor(col / 3)) % 2 === 0 ? "bg-light-input" : "bg-input" )
-						return (<Col key={col} className="p-5">
+							(empty ? "text-user " : "text-readonly " ) +
+							( (Math.floor(props.row / 3) + Math.floor(col / 3)) % 2 === 0 ? "bg-light-input" : "bg-input" )
+						return (<Col key={col} className={colClassName}>
 							<Input
 								value={props.data[col]}
 								{...(empty ? {onChange: (e) => props.update(e, props.row, col)} : {readOnly: true} )}

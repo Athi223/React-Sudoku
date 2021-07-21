@@ -46,3 +46,19 @@ h1.elegantshadow {
 	-8.2px 9.2px 1px #dbdad9,
 	-9px 10px 1px #dfdddc;
 }
+
+.border-top {
+	border-top: 2px solid gray !important;
+}
+
+.border-bottom {
+	border-bottom: 2px solid gray !important;
+}
+
+.border-left {
+	border-left: 2px solid gray !important;
+}
+
+.border-right {
+	border-right: 2px solid gray !important;
+}
