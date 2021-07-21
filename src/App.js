@@ -6,8 +6,8 @@ export default function App() {
 	const [ difficultyModal, setdifficultyModal ] = useState(false)
 	const [ resultModal, setResultModal ] = useState(false)
 	const [ result, setResult ] = useState(false)
-	const [ board, setBoard ] = useState([ [], [], [], [], [], [], [], [], [] ])
-	const [ empty, setEmpty ] = useState([ [], [], [], [], [], [], [], [], [] ])
+	const [ board, setBoard ] = useState(Array(9).fill(Array(9).fill('')))
+	const [ empty, setEmpty ] = useState(Array(9).fill([]))
 	const createGame = (emptyTiles) => {
 		const sudoku = blink(emptyTiles)
 		setBoard(sudoku)
@@ -37,17 +37,7 @@ export default function App() {
 		setBoard(sudoku)
 	}
 	const setDifficulty = (difficulty) => {
-		switch(difficulty) {
-			case 0:
-				createGame(20)
-				break
-			case 1:
-				createGame(30)
-				break
-			default:
-				createGame(40)
-				break
-		}
+		createGame(difficulty)
 		setdifficultyModal(false)
 	}
 	const update =(e, row, col) => {
@@ -55,13 +45,11 @@ export default function App() {
 		sudoku[row][col] = e.target.value
 		setBoard(sudoku)
 	}
-	useEffect(() => {
-		newGame()
-	}, [])
+	useEffect(newGame, [])
 	return (
 		<AppComponent
-			board={board} update={update} empty={empty} result={result} difficultyModal={difficultyModal} setResultModal={setResultModal}
-			newGame={newGame} resultModal={resultModal} checkgame={checkGame} resetGame={resetGame} setDifficulty={setDifficulty}
+			board={board} checkGame={checkGame} empty={empty} result={result} resultModal={resultModal} difficultyModal={difficultyModal}
+			newGame={newGame} update={update} resetGame={resetGame} setResultModal={setResultModal} setDifficulty={setDifficulty}
 		/>
 	)
 }
