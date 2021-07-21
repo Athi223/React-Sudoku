@@ -15,7 +15,15 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .bg-input, .bg-input:focus, .bg-input:hover {
-	background-color: lightskyblue;
+	background-color: skyblue
+}
+
+.bg-light-input, .bg-light-input:focus, .bg-light-input:hover {
+	background-color: deepskyblue;
+}
+
+.text-user, .text-user:focus, .text-user:hover {
+	color: orangered;
 }
 
 .text-readonly, .text-readonly:focus, .text-readonly:hover {
