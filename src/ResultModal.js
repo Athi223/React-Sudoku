@@ -7,12 +7,17 @@ export default function ResultModal(props) {
 				<ModalContent className="text-center">
 					{props.result ? 
 						<div>
-							<h4 className="text-success">You Solved It!</h4>
+							<h4 className="text-success">You Solved it in {props.result} !</h4>
 							<Button color="primary" size="lg" onClick={props.newGame}>New Game</Button>
 						</div> :
 						<div>
 							<h4 className="text-danger">Not Solved It Yet!</h4>
-							<Button color="primary" size="lg" onClick={ () => props.setResultModal(false) }>Keep trying</Button>
+							<Button color="primary" size="lg" onClick={ () =>
+								{
+									props.setResultModal(false)
+									props.start()
+								}
+							}>Keep trying</Button>
 						</div>
 					}
 				</ModalContent>

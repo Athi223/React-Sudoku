@@ -1,11 +1,13 @@
 import AppComponent from './AppComponent'
 import { useState, useEffect } from "react"
 import { blink, checkMatrix } from 'sudoku-matrix'
+import { useStopwatch } from 'react-timer-hook';
 
 export default function App() {
 	const [ difficultyModal, setdifficultyModal ] = useState(false)
 	const [ resultModal, setResultModal ] = useState(false)
 	const [ result, setResult ] = useState(false)
+	const { seconds, minutes, start, pause, reset } = useStopwatch({ autoStart: false })
 	const [ board, setBoard ] = useState(Array(9).fill(Array(9).fill('')))
 	const [ empty, setEmpty ] = useState(Array(9).fill([]))
 	const createGame = (emptyTiles) => {
@@ -26,7 +28,13 @@ export default function App() {
 		setdifficultyModal(true)
 	}
 	const checkGame = () => {
-		setResult(checkMatrix(board) === true)
+		pause()
+		if(checkMatrix(board) === true) {
+			setResult(minutes + ":" + seconds)
+		}
+		else {
+			setResult(false)
+		}
 		setResultModal(true)
 	}
 	const resetGame = () => {
@@ -39,6 +47,8 @@ export default function App() {
 	}
 	const setDifficulty = (difficulty) => {
 		createGame(difficulty)
+		reset()
+		start()
 		setdifficultyModal(false)
 	}
 	const update =(e, row, col) => {
@@ -51,6 +61,7 @@ export default function App() {
 		<AppComponent
 			board={board} checkGame={checkGame} empty={empty} result={result} resultModal={resultModal} difficultyModal={difficultyModal}
 			newGame={newGame} update={update} resetGame={resetGame} setResultModal={setResultModal} setDifficulty={setDifficulty}
+			seconds={seconds} minutes={minutes} start={start}
 		/>
 	)
 }
